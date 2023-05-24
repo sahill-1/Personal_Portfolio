@@ -1,21 +1,26 @@
 import { Container, Row, Col, Nav, Tab} from "react-bootstrap"
+import  {ProjectCard}  from "./ProjectCard";
+import colorSharp2 from "../assets/img/color-sharp2.png"
+import projectImg1 from "../assets/img/project-img1.png";
+import projectImg2 from "../assets/img/project-img2.png"
+import projectImg3 from "../assets/img/project-img3.png"
 
 export const Projects = () => {
     const projects = [
         {
             title: "ABC",
             description: "design and development",
-            imgUrl : "projectImg1",
+            imgUrl : projectImg1,
         },
         {
             title: "DEF",
             description: "design and development",
-            imgUrl : "projectImg1",
+            imgUrl : projectImg2,
         },
         {
             title: "GHI",
             description: "design and development",
-            imgUrl : "projectImg1",
+            imgUrl : projectImg3,
         },
     ]
     return (
@@ -27,8 +32,8 @@ export const Projects = () => {
                         <p>
                             Lorem ipsum is basically a sample textand oruinting the typescript.
                         </p>
-                        <Tab.Conatiner id="projects-tabs" defaultActiveKey="first">
-                        <Nav variants="Pills" defaultActiveKey="/home">
+                        <Tab.Container id="projects-tabs" defaultActiveKey="first">
+                        <Nav variants="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                             <Nav.Item>
                                 <Nav.Link eventKey="first">Tab One</Nav.Link>
                             </Nav.Item>
@@ -45,7 +50,10 @@ export const Projects = () => {
                                     {
                                         projects.map((project, index) => {
                                             return (
-                                                <p>{project.title}</p>
+                                                <ProjectCard 
+                                                    key={index}
+                                                    {...project}
+                                                />
                                             )
                                         })
                                     }
@@ -55,10 +63,11 @@ export const Projects = () => {
                             <Tab.Pane eventKey="third">Lorem Ipsum</Tab.Pane>
                         </Tab.Content>
 
-                        </Tab.Conatiner>
+                        </Tab.Container>
                     </Col>
                 </Row>
             </Container>
+            <img className="background-image-right" src={colorSharp2} alt="" />
         </section>
     )
 }
