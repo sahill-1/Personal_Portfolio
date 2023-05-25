@@ -14,8 +14,25 @@ export const Contact = () => {
     const [buttonText, setButtonText] = useState("Send");
     const [status, setStatus] = useState({});
     
-    const handleSubmit = () => {
-         return null;
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setButtonText("Sending...")
+        let response = await fetch("http://localhost:3000/contact", {
+            method: "POST",
+            headers : {
+                "Content-Type" : "Application/json;charset=utf-8",
+            },
+            body: JSON.stringify(formDetails),
+        })
+        setButtonText("Send");
+        let result = response.json();
+        SetFormDetails(formInitialDetails)
+        if(result.code===200){
+            setStatus({success: true, message: "Message sent successfully"})
+        }
+        else{
+            setStatus({success: false, message: "Error! Please try agaiin letter"})
+        }
     }
 
     const onFormUpdate = (category, value) => {
