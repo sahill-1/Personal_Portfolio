@@ -3,7 +3,9 @@ import  {ProjectCard}  from "./ProjectCard";
 import colorSharp2 from "../assets/img/color-sharp2.png"
 import projectImg1 from "../assets/img/project-img1.png";
 import projectImg2 from "../assets/img/project-img2.png"
-import projectImg3 from "../assets/img/project-img3.png"
+import projectImg3 from "../assets/img/project-img3.png";
+import TrackVisibility from "react-on-screen";
+import "animate.css";
 
 export const Projects = () => {
     const projects = [
@@ -28,10 +30,16 @@ export const Projects = () => {
             <Container>
                 <Row>
                     <Col>
+                    <TrackVisibility>
+                        {({isVisible}) => 
+                            <div className={isVisible ? "animate__animated animate__bounce" : ""}>
                         <h2>Projects</h2>
                         <p>
                             Lorem ipsum is basically a sample textand oruinting the typescript.
                         </p>
+                        </div>
+                        }
+                        </TrackVisibility>
                         <Tab.Container id="projects-tabs" defaultActiveKey="first">
                         <Nav variants="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                             <Nav.Item>
